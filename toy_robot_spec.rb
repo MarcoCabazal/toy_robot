@@ -42,4 +42,26 @@ RSpec.describe ToyRobot do
       end
     end
   end
+
+  describe 'ToyRobot#turn_left' do
+    it 'should turn the robot left' do
+      toy_robot = ToyRobot.new
+      toy_robot.place(0, 0, 'NORTH')
+      toy_robot.turn_left
+      expect(toy_robot.x).to eq 0
+      expect(toy_robot.y).to eq 0
+      expect(toy_robot.direction).to eq 'WEST'
+    end
+  end
+
+  describe 'ToyRobot#turn_right' do
+    it 'should turn the robot right' do
+      toy_robot = ToyRobot.new
+      toy_robot.place(0, 0, 'NORTH')
+      toy_robot.turn_right
+      expect(toy_robot.x).to eq 0
+      expect(toy_robot.y).to eq 0
+      expect(toy_robot.direction).to eq 'EAST'
+    end
+  end
 end
