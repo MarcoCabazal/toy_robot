@@ -80,8 +80,15 @@ RSpec.describe ToyRobot do
         toy_robot = ToyRobot.new
         toy_robot.place(0, 0, 'NORTH')
         toy_robot.move
+        toy_robot.turn_right
+        toy_robot.move
+        toy_robot.turn_left
+        toy_robot.turn_left
+        toy_robot.move
+        toy_robot.turn_right
+        toy_robot.move
         expect(toy_robot.x).to eq 0
-        expect(toy_robot.y).to eq 1
+        expect(toy_robot.y).to eq 2
         expect(toy_robot.direction).to eq 'NORTH'
       end
     end
