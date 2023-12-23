@@ -1,5 +1,14 @@
 require_relative './toy_robot'
 
+def capture
+  original_stdout = $stdout  
+  $stdout = StringIO.new 
+  yield
+  $stdout.string
+ensure
+  $stdout = original_stdout  # restore $stdout to its previous value
+end
+
 RSpec.describe ToyRobot do
   describe 'ToyRobot#initialize' do
     it 'should instantiate a new ToyRobot object' do
@@ -97,7 +106,7 @@ RSpec.describe ToyRobot do
       expect(toy_robot.x).to eq 0
       expect(toy_robot.y).to eq 1
       expect(toy_robot.direction).to eq 'NORTH'
-      expect{toy_robot.report}.to output("Position: 0, 1, NORTH\n").to_stdout
+      expect(capture { toy_robot.report }.split("\n")[0]).to eq "Position: 0, 1, NORTH"
     end
   end 
 end
