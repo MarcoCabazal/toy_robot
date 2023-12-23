@@ -43,6 +43,12 @@ class ToyRobot
 
   def report
     puts "Position: #{@x}, #{@y}, #{@direction}"
+    (0..@size - 1).reverse_each do | y |
+      (0..@size - 1).each do | x |
+        print @x == x && @y == y ? " #{x},#{y} " : "  .  "
+      end
+      puts
+    end
   end
 
   private
@@ -59,5 +65,6 @@ class ToyRobot
     current_index = VALID_DIRECTIONS.index(@direction)
     new_index = (current_index + direction) % VALID_DIRECTIONS.size
     @direction = VALID_DIRECTIONS[new_index]
+    puts "Rotating towards #{@direction}"
   end
 end
