@@ -88,4 +88,16 @@ RSpec.describe ToyRobot do
       end
     end
   end
+  
+  describe  'ToyRobot#report' do
+    it 'should output current position and orientation of robot' do
+      toy_robot = ToyRobot.new
+      toy_robot.place(0, 0, 'NORTH')
+      toy_robot.move
+      expect(toy_robot.x).to eq 0
+      expect(toy_robot.y).to eq 1
+      expect(toy_robot.direction).to eq 'NORTH'
+      expect{toy_robot.report}.to output("Position: 0, 1, NORTH\n").to_stdout
+    end
+  end 
 end

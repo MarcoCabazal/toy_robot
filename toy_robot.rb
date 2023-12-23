@@ -41,6 +41,10 @@ class ToyRobot
     end
   end
 
+  def report
+    puts "Position: #{@x}, #{@y}, #{@direction}"
+  end
+
   private
 
   def valid_destination?(x, y)
