@@ -65,6 +65,5 @@ class ToyRobot
     current_index = VALID_DIRECTIONS.index(@direction)
     new_index = (current_index + direction) % VALID_DIRECTIONS.size
     @direction = VALID_DIRECTIONS[new_index]
-    puts "Rotating towards #{@direction}"
   end
 end
