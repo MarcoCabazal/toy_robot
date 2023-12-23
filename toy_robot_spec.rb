@@ -64,4 +64,28 @@ RSpec.describe ToyRobot do
       expect(toy_robot.direction).to eq 'EAST'
     end
   end
+
+  describe 'ToyRobot#move' do
+    context 'with a valid destination' do
+      it 'should move the robot on the table' do
+        toy_robot = ToyRobot.new
+        toy_robot.place(0, 0, 'NORTH')
+        toy_robot.move
+        expect(toy_robot.x).to eq 0
+        expect(toy_robot.y).to eq 1
+        expect(toy_robot.direction).to eq 'NORTH'
+      end
+    end
+
+    context 'with an invalid destination' do
+      it 'should not move the robot on the table' do
+        toy_robot = ToyRobot.new
+        toy_robot.place(0, 0, 'SOUTH')
+        toy_robot.move
+        expect(toy_robot.x).to eq 0
+        expect(toy_robot.y).to eq 0
+        expect(toy_robot.direction).to eq 'SOUTH'
+      end
+    end
+  end
 end

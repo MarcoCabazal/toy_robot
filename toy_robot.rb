@@ -28,6 +28,19 @@ class ToyRobot
     end
   end
 
+  def move
+    case @direction
+    when 'NORTH'
+      @y += 1 if valid_destination?(@x, @y + 1)
+    when 'SOUTH'
+      @y -= 1 if valid_destination?(@x, @y - 1)
+    when 'EAST'
+      @x += 1 if valid_destination?(@x + 1, @y)
+    when 'WEST'
+      @x -= 1 if valid_destination?(@x - 1, @y)
+    end
+  end
+
   private
 
   def valid_destination?(x, y)
